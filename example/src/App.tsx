@@ -1,31 +1,25 @@
 import * as React from 'react';
+import { View } from 'react-native';
+import Keypad from 'react-native-simple-keypad';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-simpe-keypad';
-
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <View style={{ justifyContent: 'center', height: '100%' }}>
+      <Keypad
+        onKeyPress={(value) => console.log(`${value} is pressed`)}
+        showBioMetric
+        textStyle={{ fontWeight: '600', fontSize: 30 }}
+        backspaceIconFillColor="#000000"
+        backspaceIconStrokeColor="#FFFFFF"
+        bioMetricFillColor="#000000"
+        backspaceIconHeight={24}
+        backspaceIconWidth={33}
+        bioMetricIconHeight={28}
+        bioMetricIconWidth={28}
+        onBioAuthPress={() => console.log('Bio Auth')}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+export default App;

@@ -1,0 +1,17 @@
+{
+    "entryPoints": [
+        "src/index.tsx"
+    ],
+    "out": "docs",
+    "excludeExternals": true,
+    "excludeInternal": true,
+    "excludeNotDocumented": true,
+    "darkHighlightTheme": "dark-plus",
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "plugin": [
+        "typedoc-plugin-markdown"
+    ],
+    "name": "React Native Simple Keypad",
+    "pretty": true
+}

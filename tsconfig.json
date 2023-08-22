@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-simpe-keypad": ["./src/index"]
+      "react-native-simple-keypad": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
