@@ -17,8 +17,8 @@ or
 yarn add react-native-simple-keypad
 ```
 
-### How we use it in Malaa App 
-
+## How we use it in Malaa App 
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-28 at 17 10 21](https://github.com/Malaa-tech/react-native-simple-keypad/assets/54312831/b5997247-b0c9-4519-8ba3-7e577c5e5a72)
 
 ## ⚒️ Usage
 
