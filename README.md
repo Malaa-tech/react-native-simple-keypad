@@ -1,11 +1,13 @@
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Malaa-tech/react-native-simple-keypad)
+
 # react-native-simple-keypad
 
 A simple, easy to use, and beautiful keypad component for react native
 
-## 🖥️Example App Demo
+## 🖥️ Example App Demo
 run it your self using `yarn example [ios/andriod]`
 
-## 📦Installation
+## 📦 Installation
 
 ```sh
 npm install react-native-simple-keypad
@@ -15,7 +17,10 @@ or
 yarn add react-native-simple-keypad
 ```
 
-## ⚒️Usage
+### How we use it in Malaa App 
+
+
+## ⚒️ Usage
 
 ```js
 import * as React from 'react';
@@ -27,7 +32,6 @@ export default function App() {
     <View style={{ justifyContent: 'center', height: '100%' }}>
       <Keypad
         onKeyPress={(value) => console.log(`${value} is pressed`)}
-        showBioMetric
         textStyle={{ fontWeight: '600', fontSize: 30 }}
         backspaceIconFillColor="#000000"
         backspaceIconStrokeColor="#FFFFFF"
@@ -44,7 +48,7 @@ export default function App() {
 
 ```
 
-## 🤝Contributing
+## 🤝 Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 

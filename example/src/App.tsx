@@ -7,7 +7,6 @@ function App() {
     <View style={{ justifyContent: 'center', height: '100%' }}>
       <Keypad
         onKeyPress={(value) => console.log(`${value} is pressed`)}
-        showBioMetric
         textStyle={{ fontWeight: '600', fontSize: 30 }}
         backspaceIconFillColor="#000000"
         backspaceIconStrokeColor="#FFFFFF"

@@ -6,7 +6,6 @@ import PinCodeKey from './PinCodeKey';
 
 export const Keypad = ({
   onKeyPress,
-  showBioMetric = false,
   textStyle = {},
   backspaceIcon,
   bioMetricAuthIcon,
@@ -22,7 +21,6 @@ export const Keypad = ({
   disable = false,
 }: {
   onKeyPress: (value: any) => void;
-  showBioMetric?: boolean;
   textStyle?: TextStyle;
   rowReverse?: boolean;
   backspaceIcon?: any;
@@ -71,7 +69,6 @@ export const Keypad = ({
               bioMetricAuthIcon={bioMetricAuthIcon}
               onKeyPress={onKeyPress}
               onBioAuthPress={onBioAuthPress}
-              showBioMetric={showBioMetric}
               disable={disable}
             />
           ))}

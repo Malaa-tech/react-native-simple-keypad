@@ -15,7 +15,6 @@ function PinCodeKey({
   textStyle,
   backspaceIcon,
   bioMetricAuthIcon,
-  showBioMetric = false,
   backspaceIconFillColor,
   backspaceIconStrokeColor,
   bioMetricFillColor,
@@ -29,7 +28,6 @@ function PinCodeKey({
   item: string | number;
   onKeyPress: (value: any) => void;
   textStyle: TextStyle;
-  showBioMetric?: boolean;
   onBioAuthPress?: () => void;
   backspaceIcon?: any;
   bioMetricAuthIcon?: any;
@@ -47,7 +45,7 @@ function PinCodeKey({
   // ---------------------------------------------------
   const getContent = () => {
     if (item === 'auth') {
-      if (showBioMetric && onBioAuthPress) {
+      if (onBioAuthPress) {
         return (
           <>
             {bioMetricAuthIcon ? (
