@@ -6939,6 +6939,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-simple-keypad@../react-native-simple-keypad-0.2.1.tgz:
+  version "0.2.1"
+  resolved "../react-native-simple-keypad-0.2.1.tgz#4522e9b82e49f7715ad745ac974f6079c4e53f92"
+
 react-native-svg@>=13.4.0:
   version "13.12.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-13.12.0.tgz#fd4769205c64a5c93cb2da02c6fa5ccf315af862"
