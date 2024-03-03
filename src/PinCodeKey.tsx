@@ -59,6 +59,7 @@ function PinCodeKey({
           </>
         );
       }
+      return undefined;
     }
     if (item === 'delete') {
       return (
