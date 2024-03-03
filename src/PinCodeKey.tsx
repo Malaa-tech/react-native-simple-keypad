@@ -29,8 +29,8 @@ function PinCodeKey({
   onKeyPress: (value: any) => void;
   textStyle: TextStyle;
   onBioAuthPress?: () => void;
-  backspaceIcon?: any;
-  bioMetricAuthIcon?: any;
+  backspaceIcon?: JSX.Element;
+  bioMetricAuthIcon?: JSX.Element;
   backspaceIconFillColor: ColorValue;
   backspaceIconStrokeColor: ColorValue;
   bioMetricFillColor: ColorValue;
@@ -48,31 +48,26 @@ function PinCodeKey({
       if (onBioAuthPress) {
         return (
           <>
-            {bioMetricAuthIcon ? (
-              { bioMetricAuthIcon }
-            ) : (
+            {bioMetricAuthIcon || (
               <BioMetricIcon
-                color={bioMetricFillColor}
-                height={bioMetricIconHeight}
-                width={bioMetricIconWidth}
+                height={backspaceIconHeight}
+                width={backspaceIconWidth}
+                fill={backspaceIconFillColor}
+                stroke={backspaceIconStrokeColor}
               />
             )}
           </>
         );
       }
-      return <></>;
     }
     if (item === 'delete') {
       return (
         <>
-          {backspaceIcon ? (
-            { backspaceIcon }
-          ) : (
+          {backspaceIcon || (
             <BackspaceKeyIcon
-              height={backspaceIconHeight}
-              width={backspaceIconWidth}
-              fill={backspaceIconFillColor}
-              stroke={backspaceIconStrokeColor}
+              color={bioMetricFillColor}
+              height={bioMetricIconHeight}
+              width={bioMetricIconWidth}
             />
           )}
         </>

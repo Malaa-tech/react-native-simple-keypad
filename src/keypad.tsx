@@ -23,8 +23,8 @@ export const Keypad = ({
   onKeyPress: (value: any) => void;
   textStyle?: TextStyle;
   rowReverse?: boolean;
-  backspaceIcon?: any;
-  bioMetricAuthIcon?: any;
+  backspaceIcon?: JSX.Element;
+  bioMetricAuthIcon?: JSX.Element;
   backspaceIconFillColor?: ColorValue;
   backspaceIconStrokeColor?: ColorValue;
   bioMetricFillColor?: ColorValue;
