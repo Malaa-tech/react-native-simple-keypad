@@ -1,11 +1,5 @@
 import React, { type ComponentProps } from 'react';
-import type {
-  ColorValue,
-  RegisteredStyle,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
+import type { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import type { NumberProp } from 'react-native-svg';
 import PinCodeKey from './PinCodeKey';
 import PinCodeRow from './PinCodeRow';
@@ -46,7 +40,7 @@ export const Keypad = ({
   disable?: boolean;
   animated?: boolean;
   rowStyle?: StyleProp<ViewStyle>;
-  buttonStyle?: RegisteredStyle<ViewStyle>;
+  buttonStyle?: StyleProp<ViewStyle>;
   animationProps?: ComponentProps<typeof PinCodeKey>['animationProps'];
 }) => {
   // ---------------------------------------------------
