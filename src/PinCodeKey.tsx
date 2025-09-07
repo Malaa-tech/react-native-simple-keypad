@@ -4,7 +4,7 @@ import {
   type ColorValue,
   Easing,
   Pressable,
-  type RegisteredStyle,
+  type StyleProp,
   Text,
   type TextStyle,
   TouchableOpacity,
@@ -56,7 +56,7 @@ function PinCodeKey({
     pressInDuration?: number;
     pressOutDuration?: number;
   };
-    style?: RegisteredStyle<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }) {
   // animations
   const anim = React.useRef(new Animated.Value(0)).current;
