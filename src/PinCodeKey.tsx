@@ -1,8 +1,11 @@
 import React from 'react';
 import {
-  type TextStyle,
+  Animated,
   type ColorValue,
+  Easing,
+  Pressable,
   Text,
+  type TextStyle,
   TouchableOpacity,
 } from 'react-native';
 import type { NumberProp } from 'react-native-svg';
@@ -24,6 +27,8 @@ function PinCodeKey({
   bioMetricIconHeight,
   bioMetricIconWidth,
   disable = false,
+  animated = false,
+  animationProps
 }: {
   item: string | number;
   onKeyPress: (value: any) => void;
@@ -39,7 +44,44 @@ function PinCodeKey({
   bioMetricIconHeight: NumberProp;
   bioMetricIconWidth: NumberProp;
   disable?: boolean;
+    animated?: boolean;
+    animationProps?: {
+      activeColor?: string;
+      activeTextScale?: number;
+      pressInDuration?: number
+      pressOutDuration?: number
+    }
 }) {
+  // animations
+  const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+  const anim = React.useRef(new Animated.Value(0)).current;
+
+  const bgColor = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['transparent', animationProps?.activeColor ?? 'rgba(255, 255, 255, 0.24)'],
+  });
+  const textScale = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, animationProps?.activeTextScale ?? 0.85],
+  });
+
+  const pressIn = () => {
+    Animated.timing(anim, {
+      toValue: 1,
+      duration: animationProps?.pressInDuration ?? 150,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const pressOut = () => {
+    Animated.timing(anim, {
+      toValue: 0,
+      duration: animationProps?.pressOutDuration ?? 250,
+      easing: Easing.inOut(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
   // ---------------------------------------------------
   // @ Helper Functions
   // ---------------------------------------------------
@@ -74,6 +116,13 @@ function PinCodeKey({
         </>
       );
     }
+    if (animated === true) {
+      return (
+        <Animated.View style={[{ transform: [{ scale: textScale }] }]}>
+          <Text style={textStyle}>{item}</Text>
+        </Animated.View>
+      );
+    }
     return <Text style={textStyle}>{item}</Text>;
   };
 
@@ -87,6 +136,27 @@ function PinCodeKey({
   // ---------------------------------------------------
   // @ Main View
   // ---------------------------------------------------
+  if (animated) {
+    return (
+      <AnimatedPressable
+        onPress={() => getOnPress()}
+        onPressIn={pressIn}
+        onPressOut={pressOut}
+        style={[
+          {
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1,
+            borderRadius: 12,
+            backgroundColor: bgColor,
+          },
+        ]}
+        disabled={disable}
+      >
+        {getContent()}
+      </AnimatedPressable>
+    );
+  }
   return (
     <TouchableOpacity
       onPress={() => getOnPress()}
