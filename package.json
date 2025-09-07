@@ -1,6 +1,6 @@
 {
   "name": "react-native-simple-keypad",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A simple, easy to use, and beautiful keypad component for react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
