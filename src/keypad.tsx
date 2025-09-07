@@ -1,93 +1,92 @@
-import React, { type ComponentProps } from "react";
-import type { ColorValue, StyleProp, TextStyle, ViewStyle } from "react-native";
-import type { NumberProp } from "react-native-svg";
-import PinCodeKey from "./PinCodeKey";
-import PinCodeRow from "./PinCodeRow";
+import React, { type ComponentProps, useId } from 'react';
+import type { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { NumberProp } from 'react-native-svg';
+import PinCodeKey from './PinCodeKey';
+import PinCodeRow from './PinCodeRow';
 
 export const Keypad = ({
-	onKeyPress,
-	textStyle = {},
-	backspaceIcon,
-	bioMetricAuthIcon,
-	rowReverse = false,
-	backspaceIconFillColor = "#000000",
-	backspaceIconStrokeColor = "#FFFFFF",
-	bioMetricFillColor = "#000000",
-	backspaceIconHeight = 24,
-	backspaceIconWidth = 33,
-	bioMetricIconHeight = 28,
-	bioMetricIconWidth = 28,
-	onBioAuthPress,
-	disable = false,
-	animated = false,
-	rowStyle,
+  onKeyPress,
+  textStyle = {},
+  backspaceIcon,
+  bioMetricAuthIcon,
+  rowReverse = false,
+  backspaceIconFillColor = '#000000',
+  backspaceIconStrokeColor = '#FFFFFF',
+  bioMetricFillColor = '#000000',
+  backspaceIconHeight = 24,
+  backspaceIconWidth = 33,
+  bioMetricIconHeight = 28,
+  bioMetricIconWidth = 28,
+  onBioAuthPress,
+  disable = false,
+  animated = false,
+  rowStyle,
   animationProps,
 }: {
-	onKeyPress: (value: any) => void;
-	textStyle?: TextStyle;
-	rowReverse?: boolean;
-	backspaceIcon?: JSX.Element;
-	bioMetricAuthIcon?: JSX.Element;
-	backspaceIconFillColor?: ColorValue;
-	backspaceIconStrokeColor?: ColorValue;
-	bioMetricFillColor?: ColorValue;
-	backspaceIconHeight?: NumberProp;
-	backspaceIconWidth?: NumberProp;
-	bioMetricIconHeight?: NumberProp;
-	bioMetricIconWidth?: NumberProp;
-	onBioAuthPress?: () => void;
-	disable?: boolean;
-	animated?: boolean;
-	rowStyle?: StyleProp<ViewStyle>;
-    animationProps?: ComponentProps<typeof PinCodeKey>["animationProps"];
+  onKeyPress: (value: any) => void;
+  textStyle?: TextStyle;
+  rowReverse?: boolean;
+  backspaceIcon?: React.ReactElement;
+  bioMetricAuthIcon?: React.ReactElement;
+  backspaceIconFillColor?: ColorValue;
+  backspaceIconStrokeColor?: ColorValue;
+  bioMetricFillColor?: ColorValue;
+  backspaceIconHeight?: NumberProp;
+  backspaceIconWidth?: NumberProp;
+  bioMetricIconHeight?: NumberProp;
+  bioMetricIconWidth?: NumberProp;
+  onBioAuthPress?: () => void;
+  disable?: boolean;
+  animated?: boolean;
+  rowStyle?: StyleProp<ViewStyle>;
+  animationProps?: ComponentProps<typeof PinCodeKey>['animationProps'];
 }) => {
-	// ---------------------------------------------------
-	// @ Defaults
-	// ---------------------------------------------------
-	const keys = [
-		[1, 2, 3],
-		[4, 5, 6],
-		[7, 8, 9],
-		["auth", 0, "delete"],
-	];
-
-	// ---------------------------------------------------
-	// @ Main View
-	// ---------------------------------------------------
-	return (
-		<>
-			{keys.map((list: any, index: number) => (
-				// eslint-disable-next-line react/no-array-index-key
-				<PinCodeRow
-					rowReverse={rowReverse}
-					key={`${index}-keypad-row`}
-					style={rowStyle}
-				>
-					{list.map((item: string | number) => (
-						<PinCodeKey
-							key={`${item}-keypad-key`}
-							item={item}
-							textStyle={textStyle}
-							backspaceIconFillColor={backspaceIconFillColor}
-							backspaceIconStrokeColor={backspaceIconStrokeColor}
-							bioMetricFillColor={bioMetricFillColor}
-							backspaceIconHeight={backspaceIconHeight}
-							backspaceIconWidth={backspaceIconWidth}
-							bioMetricIconHeight={bioMetricIconHeight}
-							bioMetricIconWidth={bioMetricIconWidth}
-							backspaceIcon={backspaceIcon}
-							bioMetricAuthIcon={bioMetricAuthIcon}
-							onKeyPress={onKeyPress}
-							onBioAuthPress={onBioAuthPress}
-							disable={disable}
-							animated={animated}
+  // ---------------------------------------------------
+  // @ Defaults
+  // ---------------------------------------------------
+  const keys = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    ['auth', 0, 'delete'],
+  ];
+  const id = useId();
+  // ---------------------------------------------------
+  // @ Main View
+  // ---------------------------------------------------
+  return (
+    <>
+      {keys.map((list: any) => (
+        <PinCodeRow
+          rowReverse={rowReverse}
+          key={`${id}-keypad-row`}
+          style={rowStyle}
+        >
+          {list.map((item: string | number) => (
+            <PinCodeKey
+              key={`${item}-keypad-key`}
+              item={item}
+              textStyle={textStyle}
+              backspaceIconFillColor={backspaceIconFillColor}
+              backspaceIconStrokeColor={backspaceIconStrokeColor}
+              bioMetricFillColor={bioMetricFillColor}
+              backspaceIconHeight={backspaceIconHeight}
+              backspaceIconWidth={backspaceIconWidth}
+              bioMetricIconHeight={bioMetricIconHeight}
+              bioMetricIconWidth={bioMetricIconWidth}
+              backspaceIcon={backspaceIcon}
+              bioMetricAuthIcon={bioMetricAuthIcon}
+              onKeyPress={onKeyPress}
+              onBioAuthPress={onBioAuthPress}
+              disable={disable}
+              animated={animated}
               animationProps={animationProps}
-						/>
-					))}
-				</PinCodeRow>
-			))}
-		</>
-	);
+            />
+          ))}
+        </PinCodeRow>
+      ))}
+    </>
+  );
 };
 
 export default Keypad;

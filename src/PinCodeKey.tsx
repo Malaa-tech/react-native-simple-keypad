@@ -28,14 +28,14 @@ function PinCodeKey({
   bioMetricIconWidth,
   disable = false,
   animated = false,
-  animationProps
+  animationProps,
 }: {
   item: string | number;
   onKeyPress: (value: any) => void;
   textStyle: TextStyle;
   onBioAuthPress?: () => void;
-  backspaceIcon?: JSX.Element;
-  bioMetricAuthIcon?: JSX.Element;
+  backspaceIcon?: React.ReactElement;
+  bioMetricAuthIcon?: React.ReactElement;
   backspaceIconFillColor: ColorValue;
   backspaceIconStrokeColor: ColorValue;
   bioMetricFillColor: ColorValue;
@@ -44,13 +44,13 @@ function PinCodeKey({
   bioMetricIconHeight: NumberProp;
   bioMetricIconWidth: NumberProp;
   disable?: boolean;
-    animated?: boolean;
-    animationProps?: {
-      activeColor?: string;
-      activeTextScale?: number;
-      pressInDuration?: number
-      pressOutDuration?: number
-    }
+  animated?: boolean;
+  animationProps?: {
+    activeColor?: string;
+    activeTextScale?: number;
+    pressInDuration?: number;
+    pressOutDuration?: number;
+  };
 }) {
   // animations
   const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -58,7 +58,10 @@ function PinCodeKey({
 
   const bgColor = anim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['transparent', animationProps?.activeColor ?? 'rgba(255, 255, 255, 0.24)'],
+    outputRange: [
+      'transparent',
+      animationProps?.activeColor ?? 'rgba(255, 255, 255, 0.24)',
+    ],
   });
   const textScale = anim.interpolate({
     inputRange: [0, 1],
