@@ -4,13 +4,17 @@ import {
   type ColorValue,
   Easing,
   Pressable,
+  type RegisteredStyle,
   Text,
   type TextStyle,
   TouchableOpacity,
+  type ViewStyle,
 } from 'react-native';
 import type { NumberProp } from 'react-native-svg';
 import BackspaceKeyIcon from './BackspaceKeyIcon';
 import BioMetricIcon from './BioMetricIcon';
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 function PinCodeKey({
   item,
@@ -29,6 +33,7 @@ function PinCodeKey({
   disable = false,
   animated = false,
   animationProps,
+  style,
 }: {
   item: string | number;
   onKeyPress: (value: any) => void;
@@ -51,9 +56,9 @@ function PinCodeKey({
     pressInDuration?: number;
     pressOutDuration?: number;
   };
+    style?: RegisteredStyle<ViewStyle>;
 }) {
   // animations
-  const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
   const anim = React.useRef(new Animated.Value(0)).current;
 
   const bgColor = anim.interpolate({
@@ -150,9 +155,9 @@ function PinCodeKey({
             justifyContent: 'center',
             alignItems: 'center',
             flex: 1,
-            borderRadius: 12,
             backgroundColor: bgColor,
           },
+          style,
         ]}
         disabled={disable}
       >
@@ -163,11 +168,14 @@ function PinCodeKey({
   return (
     <TouchableOpacity
       onPress={() => getOnPress()}
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-      }}
+      style={[
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+          flex: 1,
+        },
+        style,
+      ]}
       disabled={disable}
     >
       {getContent()}

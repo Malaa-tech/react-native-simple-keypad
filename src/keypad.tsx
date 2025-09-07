@@ -1,5 +1,11 @@
-import React, { type ComponentProps, useId } from 'react';
-import type { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import React, { type ComponentProps } from 'react';
+import type {
+  ColorValue,
+  RegisteredStyle,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 import type { NumberProp } from 'react-native-svg';
 import PinCodeKey from './PinCodeKey';
 import PinCodeRow from './PinCodeRow';
@@ -21,6 +27,7 @@ export const Keypad = ({
   disable = false,
   animated = false,
   rowStyle,
+  buttonStyle,
   animationProps,
 }: {
   onKeyPress: (value: any) => void;
@@ -39,6 +46,7 @@ export const Keypad = ({
   disable?: boolean;
   animated?: boolean;
   rowStyle?: StyleProp<ViewStyle>;
+  buttonStyle?: RegisteredStyle<ViewStyle>;
   animationProps?: ComponentProps<typeof PinCodeKey>['animationProps'];
 }) => {
   // ---------------------------------------------------
@@ -50,7 +58,6 @@ export const Keypad = ({
     [7, 8, 9],
     ['auth', 0, 'delete'],
   ];
-  const id = useId();
   // ---------------------------------------------------
   // @ Main View
   // ---------------------------------------------------
@@ -59,7 +66,7 @@ export const Keypad = ({
       {keys.map((list: any) => (
         <PinCodeRow
           rowReverse={rowReverse}
-          key={`${id}-keypad-row`}
+          key={`row-${list.join('-')}`}
           style={rowStyle}
         >
           {list.map((item: string | number) => (
@@ -81,6 +88,7 @@ export const Keypad = ({
               disable={disable}
               animated={animated}
               animationProps={animationProps}
+              style={buttonStyle}
             />
           ))}
         </PinCodeRow>
