@@ -41,6 +41,14 @@ export default function App() {
         bioMetricIconHeight={28}
         bioMetricIconWidth={28}
         onBioAuthPress={() => console.log('Bio Auth')}
+        rowStyle={{paddingHorizontal: 16}}
+        animated
+        animationProps={{
+               activeColor?: 'gold';
+               activeTextScale?: 1.2;
+               pressInDuration?: 250
+               pressOutDuration?: 300
+        }}
       />
     </View>
   );
